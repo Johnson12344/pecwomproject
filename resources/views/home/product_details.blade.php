@@ -49,7 +49,7 @@
               </div>
               <div class="detail-box">
                 <h6>{{$data->title}}</h6>
-                <h6>Price <span>${{$data->price}}</span></h6>
+                <h6>Price <span>£{{$data->price}}</span></h6>
               </div>
 
               <div class="detail-box">

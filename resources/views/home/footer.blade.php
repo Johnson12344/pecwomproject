@@ -23,9 +23,14 @@
               ABOUT US
             </h6>
             <p>
-                Welcome to PECWOM, your one-stop online shop for high-quality products at unbeatable prices. Our mission is simple: to provide fast, secure, and enjoyable shopping with a wide range of items across electronics, fashion, home goods, and more.
-                At PECWOM, we focus on delivering exceptional value with affordable prices, fast shipping, and excellent customer service. We curate the best products from trusted brands to ensure quality, reliability, and satisfaction. Your shopping experience is our top priority, and we’re committed to offering a seamless, secure, and convenient process every step of the way.
-                Thank you for choosing PECWOM—where quality meets convenience.
+                The various products on this website are formulated by me Abi Tella,
+                I am a Microbiologist, Biotechnologist, qualified Dual trained nurse with specialty
+                in adult nursing and psychiatry. I am also a qualified cosmetic formulator specializing
+                 in creating organic hair and skincare products. With a strong commitment to sustainability and natural ingredients,
+                 I craft formulations that are both effective and gentle on the skin and hair. In addition to my expertise in cosmetics,
+                 I hold a diploma in food manufacturing and also produce healthy, organic spices for cooking.
+                 My passion for organic and health-conscious products extends across both personal care and culinary applications,
+                 ensuring that each product I create is of the highest quality. Our formulation are backed by research
             </p>
           </div>
           <div class="col-md-6 col-lg-3">
@@ -47,7 +52,7 @@
             </h6>
             <p>
                 At PECWOM, we're here for you! If you have any questions or need assistance, our customer support team is ready to help.
-                Contact Us: Reach us at support@PECWOM.com or use our live chat.
+                Contact Us: Reach us at Pecwomorganics@gmail.com or use our live chat.
                 Order Issues: Check your order status or get in touch for updates.
                 Returns & Exchanges: Visit our Returns Policy page for easy returns and exchanges.
                 We’re dedicated to ensuring your satisfaction!
@@ -60,7 +65,7 @@
             <div class="info_link-box">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span> Ogun state, Nigeria </span>
+                <span> Keene Acres, Stanford In The Vale, Oxford, SN7 8GE </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
@@ -68,7 +73,7 @@
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span> ogunbanwofemi41@gmail.co</span>
+                <span>Pecwomorganics@gmail.com</span>
               </a>
             </div>
           </div>
@@ -79,7 +84,7 @@
     <footer class=" footer_section">
       <div class="container">
         <p>click here to contact-~-
-            <a style="color: blue" href="">
+            <a style="color: blue" href="https://x.com/jt_oluwa">
                 JT
             </a>
         </p>

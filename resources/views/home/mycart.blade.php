@@ -93,7 +93,7 @@
 
 
 <div class="cart_value">
-    <h3>Total Value of Cart is : ${{$value}} </h3>
+    <h3>Total Value of Cart is : £{{$value}} </h3>
 </div>
 
 

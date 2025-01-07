@@ -10,16 +10,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p1.png" alt="">
+                <img style="width: 150px;" src="images/p1-removebg.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Ring
+                  Fried Rice Spice
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $200
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -35,16 +35,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p2.png" alt="">
+                <img style="width: 150px;" src="images/p2-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Watch
+                  Jollof Spice
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $300
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -60,16 +60,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p3.png" alt="">
+                <img style="width: 150px;" src="images/p3-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Teddy Bear
+                  Chamomile Body Butter
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $110
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -85,16 +85,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p4.png" alt="">
+                <img style="width: 150px;" src="images/p4-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Flower Bouquet
+                  Lavender Hand Cream
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $45
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -110,16 +110,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p5.png" alt="">
+                <img style="width: 150px;" src="images/p5-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Teddy Bear
+                  Lush Body Butter
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $95
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -135,16 +135,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p6.png" alt="">
+                <img style="width: 150px;" src="images/p6-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Flower Bouquet
+                  Lush Body Butter
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $70
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -160,16 +160,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p7.png" alt="">
+                <img style="width: 150px;" src="images/p7-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Watch
+                  Detangling Hairspray
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $400
+                    £4.99
                   </span>
                 </h6>
               </div>
@@ -185,16 +185,16 @@
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p8.png" alt="">
+                <img style="width: 150px;" src="images/p8-removebg-preview.png" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Ring
+                  Face Wash & Spray
                 </h6>
                 <h6>
                   Price
                   <span>
-                    $450
+                    £4.99
                   </span>
                 </h6>
               </div>
