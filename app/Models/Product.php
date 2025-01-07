@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Cviebrock\EloquentSluggable\sluggable;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
