@@ -1,16 +1,16 @@
 <section class="info_section  layout_padding2-top">
     <div class="social_container">
       <div class="social_box">
-        <a href="">
+        <a href="https://www.facebook.com/people/Pecwom-Organic-Hair-And-Skin-care-products/61556439273328/">
           <i class="fa fa-facebook" aria-hidden="true"></i>
         </a>
-        <a href="">
-          <i class="fa fa-twitter" aria-hidden="true"></i>
+        <a href="https://www.tiktok.com/@peckhamorganics">
+            <i class="fab fa-tiktok" aria-hidden="true"></i>
         </a>
-        <a href="">
+        <a href="https://www.instagram.com/pecwommakeover/">
           <i class="fa fa-instagram" aria-hidden="true"></i>
         </a>
-        <a href="">
+        <a href="https://www.youtube.com/@Pecwomorganics">
           <i class="fa fa-youtube" aria-hidden="true"></i>
         </a>
       </div>

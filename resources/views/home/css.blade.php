@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="shortcut icon" href="images/clean_reconstructed_logo.jpg" type="image/x-icon">
+<link rel="shortcut icon" href="images/pecwom logo.jpg" type="image/x-icon">
 
 <title>
     PECWOM
@@ -18,6 +18,7 @@
 
 <!-- bootstrap core css -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet" />
