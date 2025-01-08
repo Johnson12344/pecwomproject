@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactFormController;
 
 route::get('/', [HomeController::class, 'home']);
 
@@ -64,6 +65,8 @@ route::get('why', [HomeController::class,'why'])->middleware(['auth','verified']
 route::get('testimonial', [HomeController::class,'testimonial'])->middleware(['auth','verified']);
 
 route::get('contact', [HomeController::class,'contact'])->middleware(['auth','verified']);
+
+route::post('/post-message', [ContactFormController::class,'post_message']);
 
 
 Route::controller(HomeController::class)->group(function(){

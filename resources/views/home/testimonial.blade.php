@@ -26,17 +26,16 @@
                 <div class="box">
                   <div class="client_info">
                     <div class="client_name">
-                      <h5>
-                        Morijorch
-                      </h5>
+
                       <h6>
-                        Default model text
+                        Amazing Experience!
                       </h6>
                     </div>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
                   <p>
-                    editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
+                    "I was blown away by the fast delivery and excellent customer service.
+                        The website is easy to navigate, and the products are top-notch. Highly recommend!"
                   </p>
                 </div>
               </div>
@@ -44,17 +43,16 @@
                 <div class="box">
                   <div class="client_info">
                     <div class="client_name">
-                      <h5>
-                        Rochak
-                      </h5>
+
                       <h6>
-                        Default model text
+                        Exceptional Quality!
                       </h6>
                     </div>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
                   <p>
-                    Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                    "I’ve purchased multiple items from this website,
+                    and every time, the quality has exceeded my expectations. Plus, the free shipping is a fantastic bonus!"
                   </p>
                 </div>
               </div>
@@ -62,17 +60,17 @@
                 <div class="box">
                   <div class="client_info">
                     <div class="client_name">
-                      <h5>
-                        Brad Johns
-                      </h5>
+
                       <h6>
-                        Default model text
+                        Highly Reliable!
                       </h6>
                     </div>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
                   <p>
-                    Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy, editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
+                    "This website is my go-to for all my needs.
+                    The ordering process is seamless, and the team ensures everything is delivered on time.
+                    A truly trustworthy platform!"
                   </p>
                 </div>
               </div>

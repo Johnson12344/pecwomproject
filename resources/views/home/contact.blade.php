@@ -28,7 +28,8 @@
               </div>
             </div>
             <div class="col-md-6 col-lg-5 px-0">
-              <form action="#">
+              <form action="/post-message" method="POST">
+                @csrf
                 <div>
                   <input type="text" placeholder="Name" />
                 </div>
@@ -42,7 +43,7 @@
                   <input type="text" class="message-box" placeholder="Message" />
                 </div>
                 <div class="d-flex ">
-                  <button>
+                  <button type="submit">
                     SEND
                   </button>
                 </div>

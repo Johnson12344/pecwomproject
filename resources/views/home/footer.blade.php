@@ -69,7 +69,7 @@
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>+234 9018324783</span>
+                <span>+447833813331</span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
