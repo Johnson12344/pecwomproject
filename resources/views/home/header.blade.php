@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('contact')}}">Contact Us</a>
+            <a class="nav-link" href="https://www.instagram.com/pecwommakeover/">Contact Us</a>
           </li>
         </ul>
         <div class="user_option">

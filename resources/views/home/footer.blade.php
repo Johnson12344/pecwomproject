@@ -73,7 +73,7 @@
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>Pecwomorganics@gmail.com</span>
+                <span>pecwomorganics@gmail.com</span>
               </a>
             </div>
           </div>
