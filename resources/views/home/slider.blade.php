@@ -6,7 +6,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-7">
-                  <div class="detail-box">
+                  {{-- <div class="detail-box">
                     <h1>
                       Welcome To <br>
                       PECWOM
@@ -33,4 +33,4 @@
 
       </div>
     </div>
-  </section>
+  </section> --}}

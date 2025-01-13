@@ -117,7 +117,8 @@
 
             <input class="btn btn-primary" type="submit" value="Cash On Delivery">
 
-            <a btn btn-success href="{{url('stripe', $value)}}">Pay Using Card</a>
+            <a btn btn-success href="{{url('stripe', $value)}}">Pay Online</a>
+
         </div>
     </form>
 </div>

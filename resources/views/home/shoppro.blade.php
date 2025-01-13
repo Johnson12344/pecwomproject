@@ -6,7 +6,7 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        {{-- <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
             <a href="">
               <div class="img-box">
@@ -177,7 +177,7 @@
                 <span>
                   New
                 </span>
-              </div>
+              </div> --}}
             </a>
           </div>
         </div>
