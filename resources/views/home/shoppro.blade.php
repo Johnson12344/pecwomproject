@@ -62,7 +62,100 @@
               <div class="img-box">
                 <img style="width: 150px;" src="images/p3-removebg-preview.png" alt="">
               </div>
-             
+              <div class="detail-box">
+                <h6>
+                  Chamomile Body Butter
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    £8.50
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img style="width: 150px;" src="images/p4-removebg-preview.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Lavender Hand Cream
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    £4.99
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img style="width: 150px;" src="images/p5-removebg-preview.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Lush Body Butter
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    £9.99
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img style="width: 150px;" src="images/p6-removebg-preview.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Lush Body Butter
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    £9.99
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
             <a href="">

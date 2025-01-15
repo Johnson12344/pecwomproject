@@ -19,8 +19,7 @@
 <div class="container">
 
 
-
-    <h1>PECWOM Payment</h1>
+    <h2 style="color: black;" class="text-center">PECWOM Payment</h2>
 
 
 

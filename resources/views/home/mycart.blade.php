@@ -33,7 +33,7 @@
         padding: 18px;
     }
     .order_deg{
-        padding-right: 150px;
+        padding-right: 50px;
         /* margin-top: -50px; */
     }
     label{
