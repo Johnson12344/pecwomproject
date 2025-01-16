@@ -141,13 +141,11 @@ a,
 a:hover,
 a:focus {
   text-decoration: none;
-  color: orange;
 }
 
 a:hover,
 a:focus {
-  color: orange;
-
+  color: initial;
 }
 
 .btn,
