@@ -29,7 +29,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Testimonial
+          Reviews
         </h2>
       </div>
     </div>

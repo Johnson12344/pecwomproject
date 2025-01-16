@@ -2,13 +2,12 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Latest Products
+          Featured Products
         </h2>
       </div>
       <div class="row">
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p1-removebg.png" alt="">
               </div>
@@ -33,7 +32,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p2-removebg-preview.png" alt="">
               </div>
@@ -58,7 +56,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p3-removebg-preview.png" alt="">
               </div>
@@ -83,7 +80,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p4-removebg-preview.png" alt="">
               </div>
@@ -108,7 +104,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p5-removebg-preview.png" alt="">
               </div>
@@ -133,7 +128,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p6-removebg-preview.png" alt="">
               </div>
@@ -158,7 +152,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p7-removebg-preview.png" alt="">
               </div>
@@ -183,7 +176,6 @@
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
-            <a href="">
               <div class="img-box">
                 <img style="width: 150px;" src="images/p8-removebg-preview.png" alt="">
               </div>

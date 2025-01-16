@@ -83,10 +83,8 @@
     <!-- footer section -->
     <footer class=" footer_section">
       <div class="container">
-        <p>click here to contact-~-
-            <a style="color: blue" href="https://x.com/jt_oluwa">
-                JT
-            </a>
+
+        <p> <a href="https://x.com/jt_oluwa">Femi Johnson (JT)</a>
         </p>
       </div>
     </footer>
