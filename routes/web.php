@@ -86,3 +86,11 @@ route::get('on_the_way/{id}', [AdminController::class,'on_the_way'])->middleware
 route::get('delivered/{id}', [AdminController::class,'delivered'])->middleware(['auth','admin']);
 
 route::get('print_pdf/{id}', [AdminController::class,'print_pdf'])->middleware(['auth','admin']);
+
+route::get('terms', [HomeController::class,'terms'])->middleware([]);
+
+route::get('privacy', [HomeController::class,'privacy'])->middleware([]);
+
+route::get('return', [HomeController::class,'return'])->middleware([]);
+
+

@@ -282,5 +282,21 @@ class HomeController extends Controller
         return view('home.contact', compact('count'));
     }
 
+    public function terms()
+    {
+        return view('home.terms');
+    }
+
+    public function privacy()
+    {
+        return view('home.privacy');
+    }
+
+    public function return()
+    {
+        return view('home.return');
+    }
 
 }
+
+

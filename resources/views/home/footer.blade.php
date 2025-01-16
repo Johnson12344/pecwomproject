@@ -15,6 +15,19 @@
         </a>
       </div>
     </div>
+
+    <div class="policy">
+    <nav>
+        <ul>
+            <li><a href="{{url('terms')}}">Terms & Conditions</a></li>
+            <li><a href="{{url('privacy')}}">Privacy Policy</a></li>
+            <li><a href="{{url('return')}}">Return Policy</a></li>
+        </ul>
+    </nav>
+    </div>
+
+
+
     <div class="info_container ">
       <div class="container">
         <div class="row">

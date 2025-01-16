@@ -58,6 +58,43 @@ body {
   text-align: center;
 }
 
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px; /* Add space below the navigation */
+}
+
+nav ul li {
+    margin-right: 20px; /* Add spacing between links */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* hover effect */
+    color: orange;
+}
+@media (max-width: 768px) {
+    .policy {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    .policy h2 {
+        font-size: 18px; /* Smaller headings for mobile */
+    }
+
+    .policy p {
+        font-size: 13px; /* Slightly smaller font for paragraphs */
+    }
+}
+
 /*header section*/
 .hero_area {
   padding: 0 45px;
@@ -104,11 +141,13 @@ a,
 a:hover,
 a:focus {
   text-decoration: none;
+  color: orange;
 }
 
 a:hover,
 a:focus {
-  color: initial;
+  color: orange;
+
 }
 
 .btn,
@@ -850,6 +889,10 @@ a:focus {
 
 .footer_section a {
   color: #cbc9c9;
+}
+
+.footer_section a:hover {
+    color: orange;
 }
 
 /* end footer section*/

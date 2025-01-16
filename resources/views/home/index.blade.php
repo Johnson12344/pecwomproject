@@ -407,6 +407,11 @@
 
   <!-- info section -->
 
+
+
+       
+
+
  @include('home.footer')
 </body>
 
