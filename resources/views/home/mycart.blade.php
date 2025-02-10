@@ -52,7 +52,7 @@
    @include('home.header')
     <!-- end header section -->
 
-    <div class="div_deg">
+    <div class="div_deg animate-fade-in">
 
 
         <table>

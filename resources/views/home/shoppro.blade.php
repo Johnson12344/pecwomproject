@@ -1,4 +1,4 @@
-<section class="shop_section layout_padding">
+<section class="shop_section layout_padding animate-fade-in">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -9,7 +9,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p1-removebg.png" alt="">
+                <img style="width: 150px;" src="images/p1-removebg.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -33,7 +33,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p2-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p2-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -57,7 +57,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p3-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p3-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -81,7 +81,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p4-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p4-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -105,7 +105,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p5-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p5-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -129,7 +129,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p6-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p6-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -153,7 +153,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p7-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p7-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>
@@ -177,7 +177,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
               <div class="img-box">
-                <img style="width: 150px;" src="images/p8-removebg-preview.png" alt="">
+                <img style="width: 150px;" src="images/p8-removebg-preview.png" alt="" class="zoom-image">
               </div>
               <div class="detail-box">
                 <h6>

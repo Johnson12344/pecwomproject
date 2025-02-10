@@ -16,7 +16,7 @@
 
 
 
-<div class="container">
+<div class="container animate-fade-in">
 
 
     <h2 style="color: black;" class="text-center">PECWOM Payment</h2>

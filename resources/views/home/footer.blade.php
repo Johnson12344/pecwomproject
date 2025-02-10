@@ -1,17 +1,17 @@
-<section class="info_section  layout_padding2-top">
+<section class="info_section  layout_padding2-top animate-fade-in">
     <div class="social_container">
       <div class="social_box">
         <a href="https://www.facebook.com/people/Pecwom-Organic-Hair-And-Skin-care-products/61556439273328/">
-          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <i class="fa fa-facebook zoooom-image" aria-hidden="true"></i>
         </a>
         <a href="https://www.tiktok.com/@peckhamorganics">
-            <i class="fab fa-tiktok" aria-hidden="true"></i>
+            <i class="fab fa-tiktok zoooom-image" aria-hidden="true"></i>
         </a>
         <a href="https://www.instagram.com/pecwommakeover/">
-          <i class="fa fa-instagram" aria-hidden="true"></i>
+          <i class="fa fa-instagram zoooom-image" aria-hidden="true"></i>
         </a>
         <a href="https://www.youtube.com/@Pecwomorganics">
-          <i class="fa fa-youtube" aria-hidden="true"></i>
+          <i class="fa fa-youtube zoooom-image" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -111,5 +111,6 @@
   <script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </script>
   <script src="{{asset('js/custom.js')}}"></script>

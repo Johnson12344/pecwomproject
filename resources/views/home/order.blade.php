@@ -35,7 +35,7 @@
     <!-- header section strats -->
    @include('home.header')
 
-<div class="div_center">
+<div class="div_center animate-fade-in">
     <table>
         <tr>
             <th>Product Name</th>

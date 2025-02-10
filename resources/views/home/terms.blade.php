@@ -12,7 +12,7 @@
         <!-- end header section -->
         <!-- slider section -->
 
-        <div class="container heading_center heading_container">
+        <div class="container heading_center heading_container animate-fade-in">
             <h2 style="padding: 10px">Terms & Condition</h2>
             <p style="text-align: justify; letter-spacing: 0.01cm;">
                 Welcome to PECWOM! These Terms and Conditions outline the rules and regulations for using our website,

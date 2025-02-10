@@ -11,7 +11,7 @@
    @include('home.header')
     <!-- end header section -->
 
-    <section class="client_section layout_padding">
+    <section class="client_section layout_padding animate-fade-in">
         <div class="container">
           <div class="heading_container heading_center">
             <h2>

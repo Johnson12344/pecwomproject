@@ -1,5 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import url("font-awesome.min.css");
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation */
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+
 body {
   font-family: "poppins", sans-serif;
   color: #101010;
@@ -73,13 +91,13 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: white; /* Link color */
+    color: #ff4304; /* Link color */
     font-weight: bold;
 }
 
 nav ul li a:hover {
-    text-decoration: underline; /* hover effect */
-    color: orange;
+    
+    color: #db4f66;
 }
 @media (max-width: 768px) {
     .policy {
@@ -106,7 +124,7 @@ nav ul li a:hover {
 
 #navbarSupportedContent {
   width: 100%;
-  background-color: skyblue;
+  background-color: #ff4304;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -297,6 +315,30 @@ a:focus {
   width: 275px;
 }
 
+.zoom-image-container {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+}
+
+.zoom-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoom-image:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .zoom-image:hover {
+        transform: scale(1);
+    }
+}
+
 .slider_section .detail-box {
   padding-left: 45px;
   margin: 45px 0;
@@ -311,9 +353,9 @@ a:focus {
 .slider_section .detail-box a {
   display: inline-block;
   padding: 10px 40px;
-  background-color: #db4566;
+  background-color: #ff4304;
   color: #ffffff;
-  border: 1px solid #db4566;
+  border: 1px solid #ff4304;
   border-radius: 5px;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -437,9 +479,9 @@ a:focus {
 .shop_section .btn-box a {
   display: inline-block;
   padding: 10px 40px;
-  background-color: #f16179;
+  background-color: #ff4304;
   color: #ffffff;
-  border: 1px solid #f16179;
+  border: 1px solid #ff4304;
   border-radius: 5px;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -547,6 +589,24 @@ a:focus {
   width: 55px;
   height: auto;
   fill: #320b57;
+}
+.zooom-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.zooom-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: #ff4304;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .zooom-image:hover {
+        transform: scale(1);
+    }
 }
 
 .gift_section {
@@ -687,9 +747,9 @@ a:focus {
 .contact_section button {
   display: inline-block;
   padding: 12px 45px;
-  background-color: #db4f66;
+  background-color: #ff4304;
   color: #ffffff;
-  border: 1px solid #db4f66;
+  border: 1px solid #ff4304;
   border-radius: 0;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -756,7 +816,7 @@ a:focus {
 .client_section .carousel-control-next {
   width: 45px;
   height: 125px;
-  background-color: #db4f66;
+  background-color: #ff4304;
   opacity: 1;
   font-size: 28px;
   font-weight: bold;
@@ -803,8 +863,35 @@ a:focus {
 
 .info_section .social_container .social_box a {
   margin: 0 10px;
-  color: #ffffff;
+  color: #ff4304;
   font-size: 24px;
+}
+
+.info_section .social_container .social_box a:hover{
+    color: #db4f66;
+}
+.zoooom-image-container {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+}
+
+.zoooom-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoooom-image:hover {
+    transform: scale(2);
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .zoooom-image:hover {
+        transform: scale(1);
+    }
 }
 
 .info_section .info_form form input {
@@ -818,7 +905,7 @@ a:focus {
   outline: none;
   border: none;
   color: #ffffff;
-  background: #f89cab;
+  background: #ff4304;
   margin-top: 15px;
   text-transform: uppercase;
 }

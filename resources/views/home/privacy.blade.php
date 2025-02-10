@@ -12,7 +12,7 @@
         <!-- end header section -->
         <!-- slider section -->
 
-        <div class="container heading_center heading_container">
+        <div class="container heading_center heading_container animate-fade-in">
             <h2 style="padding: 10px">Privacy Policy</h2>
             <p style="text-align: justify; letter-spacing: 0.01cm;">
                 Your privacy is important to us. Please refer to our Privacy Policy for detailed information on how we

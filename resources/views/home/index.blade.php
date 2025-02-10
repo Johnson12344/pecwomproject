@@ -25,7 +25,7 @@
   <!-- end shop section -->
 
 
-  <section class="client_section layout_padding">
+  <section class="client_section layout_padding animate-fade-in">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -104,7 +104,7 @@
   </section>
 
 
-  <section class="why_section layout_padding">
+  <section class="why_section layout_padding animate-fade-in">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -113,7 +113,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div class="box ">
+          <div class="box zooom-image">
             <div class="img-box">
               <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <g>
@@ -212,7 +212,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="box ">
+          <div class="box zooom-image ">
             <div class="img-box">
               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490.667 490.667" style="enable-background:new 0 0 490.667 490.667;" xml:space="preserve">
                 <g>
@@ -327,7 +327,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="box ">
+          <div class="box zooom-image">
             <div class="img-box">
               <svg id="_30_Premium" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg" data-name="30_Premium">
                 <g id="filled">
@@ -354,7 +354,7 @@
 
   <!-- contact section -->
 
-  <section class="contact_section layout_padding">
+  <section class="contact_section layout_padding animate-fade-in">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -365,9 +365,9 @@
     <div class="container container-bg">
       <div class="row">
         <div class="col-lg-7 col-md-6 px-0">
-          <div class="map_container">
-            <div class="map-responsive">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.1802326960087!2d-1.5140072000000002!3d51.638224300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876b52412d5b961%3A0x17987004a8375deb!2sKeene%20Acrs%2C%20Stanford%20in%20the%20Vale%2C%20Faringdon%2C%20UK!5e0!3m2!1sen!2sng!4v1737020867792!5m2!1sen!2sng" width="350" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map_container ">
+            <div class="map-responsive ">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.1802326960087!2d-1.5140072000000002!3d51.638224300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876b52412d5b961%3A0x17987004a8375deb!2sKeene%20Acrs%2C%20Stanford%20in%20the%20Vale%2C%20Faringdon%2C%20UK!5e0!3m2!1sen!2sng!4v1737020867792!5m2!1sen!2sng" width="350" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="zoom-image"></iframe>
               {{-- <iframe src="https://maps.app.goo.gl/4b6ZdyM8PjAf2LCE7" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe> --}}
             </div>
           </div>
@@ -409,7 +409,7 @@
 
 
 
-       
+
 
 
  @include('home.footer')
