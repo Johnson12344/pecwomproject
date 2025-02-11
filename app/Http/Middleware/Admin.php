@@ -16,11 +16,13 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->usertype !='admin')
-        {
-            return redirect('/');
+        if (!Auth::check()) {
+            return redirect()->route('login');
         }
 
+        if (Auth::user()->usertype !== 'admin') {
+            return redirect()->route('home')->with('error', 'Unauthorized access.');
+        }
 
         return $next($request);
     }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Stripe;
 use App\Models\Cart;
 use App\Models\User;
@@ -15,99 +14,89 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    public function index()
+    // Constants for common values
+    private const TOAST_TIMEOUT = 10000;
+    private const STRIPE_CURRENCY = 'usd';
+
+    // Add protected property for cart count
+    protected function getCartCount()
     {
-        $user = User::where('usertype', 'user')->get()->count();
-        $product = Product::all()->count();
-        $order = Order::all()->count();
-
-        $delivered = Order::where('status', 'Delivered')->get()->count();
-        return view("admin.index", compact("user","product","order","delivered"));
-
+        return Auth::id() ? Cart::where('user_id', Auth::id())->count() : '';
     }
 
+    protected function getViewData(array $additionalData = [])
+    {
+        return array_merge(['count' => $this->getCartCount()], $additionalData);
+    }
+
+    public function index()
+    {
+        $data = [
+            'user' => User::where('usertype', 'user')->count(),
+            'product' => Product::count(),
+            'order' => Order::count(),
+            'delivered' => Order::where('status', 'Delivered')->count()
+        ];
+
+        return view("admin.index", $data);
+    }
 
     public function home()
     {
-        $product = Product::all();
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-
-        return view('home.index', compact('product','count'));
+        return $this->showProductPage('home.index');
     }
 
-    public function login_home(){
-        $product = Product::all();
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-        $reviews = Review::latest()->get(); // Fetch all reviews, latest first
-
-        return view('home.index', compact('product','count', 'reviews'));
+    public function login_home()
+    {
+        return $this->showProductPage('home.index', true);
     }
 
-    public function product_details($id){
-        $data = Product::find($id);
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
+    protected function showProductPage($view, $includeReviews = false)
+    {
+        $data = ['product' => Product::all()];
+
+        if ($includeReviews) {
+            $data['reviews'] = Review::latest()->get();
         }
 
-        return view('home.product_details', compact('data', 'count'));
+        return view($view, $this->getViewData($data));
     }
 
-    public function add_cart($id){
-        $product_id = $id;
-        $user = Auth::user();
-        $user_id = $user->id;
-        $data = new Cart;
-        $data->user_id = $user_id;
-        $data->product_id = $product_id;
-        $data->save();
-        return redirect()->back();
+    public function product_details($id)
+    {
+        return view('home.product_details', $this->getViewData([
+            'data' => Product::findOrFail($id)
+        ]));
     }
 
-    public function mycart(){
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-            $cart = Cart::where('user_id', $userid)->get();
+    public function add_cart($id)
+    {
+        if (!Auth::id()) {
+            return redirect()->route('login');
         }
-        else
-        {
-            $count = '';
-        }
-        return view('home.mycart', compact('count','cart'));
+
+        Cart::create([
+            'user_id' => Auth::id(),
+            'product_id' => $id
+        ]);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully');
     }
 
+    public function mycart()
+    {
+        if (!Auth::id()) {
+            return view('home.mycart', ['count' => '']);
+        }
 
-    public function delete_cart($id){
-        $data = Cart::find($id);
-        $data->delete();
+        return view('home.mycart', $this->getViewData([
+            'cart' => Cart::where('user_id', Auth::id())->get()
+        ]));
+    }
+
+    public function delete_cart($id)
+    {
+        Cart::findOrFail($id)->delete();
         toastr()->timeOut(10000)->closeButton()->addSuccess('Product Removed from the Cart Successfully');
         return redirect()->back();
     }
@@ -150,211 +139,103 @@ class HomeController extends Controller
     }
 
     public function stripe($value)
-
     {
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-
-        return view('home.stripe', compact('value', 'count'));
-
+        return view('home.stripe', [
+            'value' => $value,
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function stripePost(Request $request, $value)
-
     {
-
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-
-
-        Stripe\Charge::create ([
-
-                "amount" => intval($value) * 100,
-
-                "currency" => "usd",
-
-                "source" => $request->stripeToken,
-
-                "description" => "Test payment from itsolutionstuff.com."
-
+        Stripe\Charge::create([
+            "amount" => intval($value) * 100,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Test payment from itsolutionstuff.com."
         ]);
 
-
-        $name = Auth::user()->name;
-        $phone = Auth::user()->phone;
-        $address = Auth::user()->address;
-
-        $userid = Auth::user()->id;
-        $cart = Cart::where('user_id', $userid)->get();
-
-        foreach($cart as $carts){
-
-            $order = new Order;
-            $order->product_id = $carts->product_id;
-            $order->name = $name;
-            $order->rec_address = $address;
-            $order->phone = $phone;
-            $order->user_id = $userid;
-
-            $order->payment_status = 'Paid';
-            $order->save();
-        }
-
-        $cart_remove = Cart::where('user_id', $userid)->get();
-
-        foreach($cart_remove as $remove){
-            $data = Cart::find($remove->id);
-            $data->delete();
-        }
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Ordered Successfully');
+        $user = Auth::user();
+        $this->processOrder($user->name, $user->phone, $user->address);
 
         return redirect('mycart');
+    }
 
+    protected function processOrder($name, $phone, $address)
+    {
+        $userid = Auth::id();
+        $cart_items = Cart::where('user_id', $userid)->get();
 
+        foreach($cart_items as $item) {
+            Order::create([
+                'product_id' => $item->product_id,
+                'name' => $name,
+                'rec_address' => $address,
+                'phone' => $phone,
+                'user_id' => $userid,
+                'payment_status' => 'Paid'
+            ]);
+        }
+
+        Cart::where('user_id', $userid)->delete();
+        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Ordered Successfully');
     }
 
     public function shop()
     {
-        $product = Product::all();
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-
-        return view('home.shop', compact('product','count'));
+        return $this->showProductPage('home.shop');
     }
-
 
     public function why()
     {
-
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-
-        return view('home.why', compact('count'));
+        return view('home.why', [
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function testimonial()
     {
-
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-        $reviews = Review::latest()->get(); // Fetch all reviews, latest first
-
-        return view('home.testimonial', compact('count', 'reviews'));
+        return view('home.testimonial', [
+            'count' => $this->getCartCount(),
+            'reviews' => Review::latest()->get()
+        ]);
     }
 
     public function contact()
     {
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-
-        return view('home.contact', compact('count'));
+        return view('home.contact', [
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function terms()
     {
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-        return view('home.terms', compact('count'));
+        return view('home.terms', [
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function privacy()
     {
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-        return view('home.privacy', compact('count'));
+        return view('home.privacy', [
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function return()
     {
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-        return view('home.return', compact('count'));
+        return view('home.return', [
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function writeReview()
     {
-
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-        return view('home.write-review', compact('count'));
+        return view('home.write-review', [
+            'count' => $this->getCartCount()
+        ]);
     }
 
     public function store(Request $request)
@@ -370,11 +251,17 @@ class HomeController extends Controller
             'comment' => $request->comment
         ]);
 
-        $reviews = Review::latest()->get(); // Fetch all reviews, latest first
-
-        return redirect()->route('index', compact('reviews'))->with('success', 'Review submitted successfully!');
+        return redirect()->route('index', [
+            'reviews' => Review::latest()->get()
+        ])->with('success', 'Review submitted successfully!');
     }
 
+    protected function showToast($message)
+    {
+        return toastr()->timeOut(self::TOAST_TIMEOUT)
+                      ->closeButton()
+                      ->addSuccess($message);
+    }
 }
 
 

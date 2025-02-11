@@ -8,42 +8,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-
 class ContactController extends Controller
 {
+    private const ADMIN_EMAIL = 'ogunbanwofemi2000@gmail.com';
+
     public function show()
     {
-        if(Auth::id())
-        {
-            $user = Auth::user();
-            $userid = $user->id;
-            $count = Cart::where('user_id', $userid)->count();
-        }
-        else
-        {
-            $count = '';
-        }
-
-        return view('home.contact', compact('count'));
+        return view('home.contact', [
+            'count' => Auth::id() ? Cart::where('user_id', Auth::id())->count() : ''
+        ]);
     }
 
     public function send(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'message' => 'required|string'
+            'email' => 'required|email|max:255',
+            'message' => 'required|string|min:10'
         ]);
 
-        $details = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message
-        ];
-
-        Mail::to('ogunbanwofemi2000@gmail.com')->send(new ContactMail($details));
-
-        return back()->with('success', 'Your message has been sent successfully!');
+        try {
+            Mail::to(self::ADMIN_EMAIL)->send(new ContactMail($validated));
+            return back()->with('success', 'Your message has been sent successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to send message. Please try again later.')
+                        ->withInput();
+        }
     }
 }
 
