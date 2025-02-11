@@ -104,6 +104,53 @@
   </section>
 
 
+  <section class="client_section layout_padding animate-fade-in">
+    <div class="container">
+        <div class="heading_container heading_center">
+          <h2>
+            Drop Your Review
+          </h2>
+          <p style="text-align: justify; letter-spacing: 0.01cm;">Reviews on the PECWOM website allow users to share their experiences and feedback about the platform’s
+            services and products. These reviews help new users make informed decisions while enabling
+            PECWOM to improve its offerings based on customer insights. Users can rate services, provide comments,
+            and highlight areas of excellence or needed improvements. A transparent and interactive review system enhances trust, ensures quality service delivery,
+            and fosters a better user experience for everyone on the PECWOM platform.</p>
+            <div class="btn-box">
+                <a href="{{route('write-review')}}">Click here to drop your review</a>
+            </div>
+        </div>
+      </div>
+  <div class="client_section layout_padding animate-fade-in">
+    <div class="container">
+    <div class="heading_container heading_center">
+        <h2>Latest Reviews</h2>
+        </div>
+        @if($reviews->isEmpty())
+    <p>No reviews yet. Be the first to leave a review!</p>
+@else
+    @foreach($reviews as $review)
+    <div class="card mt-2">
+        <div class="card-body">
+            <strong>{{ $review->user->name }}</strong>
+            <span>
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= $review->rating)
+                        <i class="fas fa-star text-warning"></i>
+                    @else
+                        <i class="far fa-star text-muted"></i>
+                    @endif
+                @endfor
+            </span>
+            <p>{{ $review->comment }}</p>
+            <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
+        </div>
+    </div>
+@endforeach
+@endif
+</div>
+  </div>
+
+
   <section class="why_section layout_padding animate-fade-in">
     <div class="container">
       <div class="heading_container heading_center">
@@ -367,13 +414,16 @@
         <div class="col-lg-7 col-md-6 px-0">
           <div class="map_container ">
             <div class="map-responsive ">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.1802326960087!2d-1.5140072000000002!3d51.638224300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876b52412d5b961%3A0x17987004a8375deb!2sKeene%20Acrs%2C%20Stanford%20in%20the%20Vale%2C%20Faringdon%2C%20UK!5e0!3m2!1sen!2sng!4v1737020867792!5m2!1sen!2sng" width="350" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="zoom-image"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.1802326960087!2d-1.5140072000000002!3d51.638224300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876b52412d5b961%3A0x17987004a8375deb!2sKeene%20Acrs%2C%20Stanford%20in%20the%20Vale%2C%20Faringdon%2C%20UK!5e0!3m2!1sen!2sng!4v1737020867792!5m2!1sen!2sng" width="360" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               {{-- <iframe src="https://maps.app.goo.gl/4b6ZdyM8PjAf2LCE7" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe> --}}
             </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-5 px-0">
-          <form action="/post-message" method="POST">
+            @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+          <form action="{{ route('contact.send') }}" method="POST">
             @csrf
             <div>
               <input type="text" placeholder="Name" />

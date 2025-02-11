@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Cart;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactFormController;
 
@@ -23,6 +28,7 @@ require __DIR__.'/auth.php';
 
 
 route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['auth','admin']);
+
 
 route::get('view_category', [AdminController::class,'view_category'])->middleware(['auth','admin']);
 
@@ -66,7 +72,6 @@ route::get('testimonial', [HomeController::class,'testimonial'])->middleware(['a
 
 route::get('contact', [HomeController::class,'contact'])->middleware(['auth','verified']);
 
-route::post('/post-message', [ContactFormController::class,'post_message']);
 
 
 Route::controller(HomeController::class)->group(function(){
@@ -94,3 +99,26 @@ route::get('privacy', [HomeController::class,'privacy'])->middleware([]);
 route::get('return', [HomeController::class,'return'])->middleware([]);
 
 
+Route::get('/', function () {
+    $reviews = Review::latest()->take(5)->get(); // Fetch latest 5 reviews
+    if(Auth::id())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = '';
+        }
+    return view('home.index', compact('reviews', 'count'));
+})->name('index');
+
+Route::post('/reviews', [ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
+
+
+Route::get('/write-review', [HomeController::class, 'writeReview'])->middleware(['auth','verified'])->name('write-review');
+
+
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

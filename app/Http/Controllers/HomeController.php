@@ -7,6 +7,7 @@ use Stripe;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Review;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,8 +57,9 @@ class HomeController extends Controller
         {
             $count = '';
         }
+        $reviews = Review::latest()->get(); // Fetch all reviews, latest first
 
-        return view('home.index', compact('product','count'));
+        return view('home.index', compact('product','count', 'reviews'));
     }
 
     public function product_details($id){
@@ -150,8 +152,18 @@ class HomeController extends Controller
     public function stripe($value)
 
     {
+        if(Auth::id())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = '';
+        }
 
-        return view('home.stripe', compact('value'));
+        return view('home.stripe', compact('value', 'count'));
 
     }
 
@@ -260,14 +272,13 @@ class HomeController extends Controller
         {
             $count = '';
         }
+        $reviews = Review::latest()->get(); // Fetch all reviews, latest first
 
-        return view('home.testimonial', compact('count'));
+        return view('home.testimonial', compact('count', 'reviews'));
     }
 
     public function contact()
     {
-
-
         if(Auth::id())
         {
             $user = Auth::user();
@@ -284,17 +295,84 @@ class HomeController extends Controller
 
     public function terms()
     {
-        return view('home.terms');
+
+        if(Auth::id())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = '';
+        }
+        return view('home.terms', compact('count'));
     }
 
     public function privacy()
     {
-        return view('home.privacy');
+
+        if(Auth::id())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = '';
+        }
+        return view('home.privacy', compact('count'));
     }
 
     public function return()
     {
-        return view('home.return');
+
+        if(Auth::id())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = '';
+        }
+        return view('home.return', compact('count'));
+    }
+
+    public function writeReview()
+    {
+
+        if(Auth::id())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = '';
+        }
+        return view('home.write-review', compact('count'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string'
+        ]);
+
+        Review::create([
+            'user_id' => Auth::id(),
+            'rating' => $request->rating,
+            'comment' => $request->comment
+        ]);
+
+        $reviews = Review::latest()->get(); // Fetch all reviews, latest first
+
+        return redirect()->route('index', compact('reviews'))->with('success', 'Review submitted successfully!');
     }
 
 }

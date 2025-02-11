@@ -7,10 +7,12 @@
     <title>Contact Mail</title>
 </head>
 <body>
-    <p>Name: </p>
-    <p>E-mail: </p>
-    <p>Phone: </p>
-    <p>Message: </p>
+    <h2>New Contact Form Submission</h2>
+<p><strong>Name:</strong> {{ $details['name'] }}</p>
+<p><strong>Email:</strong> {{ $details['email'] }}</p>
+<p><strong>Message:</strong></p>
+<p>{{ $details['message'] }}</p>
+
 
 </body>
 </html>

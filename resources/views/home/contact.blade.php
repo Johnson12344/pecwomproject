@@ -29,7 +29,10 @@
               </div>
             </div>
             <div class="col-md-6 col-lg-5 px-0">
-              <form action="/post-message" method="POST">
+                @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+              <form action="{{ route('contact.send') }}" method="POST">
                 @csrf
                 <div>
                   <input type="text" placeholder="Name" />

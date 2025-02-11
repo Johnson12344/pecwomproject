@@ -96,7 +96,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    
+
     color: #db4f66;
 }
 @media (max-width: 768px) {
@@ -608,6 +608,33 @@ a:focus {
         transform: scale(1);
     }
 }
+
+
+.btn-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 45px;
+  }
+
+ .btn-box a {
+    display: inline-block;
+    padding: 10px 40px;
+    background-color: #ff4304;
+    color: #ffffff;
+    border: 1px solid #ff4304;
+    border-radius: 5px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+
+ .btn-box a:hover {
+    background-color: transparent;
+    color: #f16179;
+  }
 
 .gift_section {
   padding-left: 45px;

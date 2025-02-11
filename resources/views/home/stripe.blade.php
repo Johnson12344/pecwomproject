@@ -5,6 +5,7 @@
 <head>
 
     <title>PECWOM Payment</title>
+        @include('home.css')
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
@@ -12,15 +13,13 @@
 
 </head>
 
+
+
 <body>
-
-
+    <div class="hero_area">
+    @include('home.header')
 
 <div class="container animate-fade-in">
-
-
-    <h2 style="color: black;" class="text-center">PECWOM Payment</h2>
-
 
 
     <div class="row">
@@ -181,8 +180,8 @@
 
 </div>
 
-
-
+@include('home.footer')
+    </div>
 </body>
 
 
