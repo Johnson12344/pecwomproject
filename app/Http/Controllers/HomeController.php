@@ -97,7 +97,7 @@ class HomeController extends Controller
     public function delete_cart($id)
     {
         Cart::findOrFail($id)->delete();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Removed from the Cart Successfully');
+        toastr()->success('Product Removed from the Cart Successfully');
         return redirect()->back();
     }
 
@@ -125,7 +125,7 @@ class HomeController extends Controller
             $data = Cart::find($remove->id);
             $data->delete();
         }
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Ordered Successfully');
+        toastr()->success('Product Ordered Successfully');
 
         return redirect()->back();
 
@@ -142,25 +142,38 @@ class HomeController extends Controller
     {
         return view('home.stripe', [
             'value' => $value,
-            'count' => $this->getCartCount()
+            'count' => $this->getCartCount(),
+            'stripeKey' => config('services.stripe.key')
         ]);
     }
-
     public function stripePost(Request $request, $value)
     {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        try {
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        Stripe\Charge::create([
-            "amount" => intval($value) * 100,
-            "currency" => "usd",
-            "source" => $request->stripeToken,
-            "description" => "Test payment from itsolutionstuff.com."
-        ]);
+            Stripe\Charge::create([
+                "amount" => intval($value) * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+            ]);
 
-        $user = Auth::user();
-        $this->processOrder($user->name, $user->phone, $user->address);
+            $user = Auth::user();
+            $this->processOrder($user->name, $user->phone, $user->address);
 
-        return redirect('mycart');
+            // Clear the cart and redirect with success message
+            toastr()->success('Payment successful! Your order has been placed.');
+            return redirect('mycart')->with('success', 'Payment successful!');
+
+        } catch (\Stripe\Exception\CardException $e) {
+            // Handle card errors
+            toastr()->error('Payment failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Payment failed: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Handle other errors
+            toastr()->error('An error occurred: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
+        }
     }
 
     protected function processOrder($name, $phone, $address)
@@ -180,7 +193,7 @@ class HomeController extends Controller
         }
 
         Cart::where('user_id', $userid)->delete();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Ordered Successfully');
+        toastr()->success('Product Ordered Successfully');
     }
 
     public function shop()
@@ -258,9 +271,7 @@ class HomeController extends Controller
 
     protected function showToast($message)
     {
-        return toastr()->timeOut(self::TOAST_TIMEOUT)
-                      ->closeButton()
-                      ->addSuccess($message);
+        return toastr()->success($message);
     }
 }
 

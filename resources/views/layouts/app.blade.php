@@ -13,6 +13,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Add Toastr CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -32,5 +35,22 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Add jQuery if not already included -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Add Toastr JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <!-- Add our toastr config -->
+        <script src="{{ asset('js/toastr-config.js') }}"></script>
+
+        <!-- Add toastr initialization script -->
+        <script>
+            @if(Session::has('toast'))
+                let toast = @json(Session::get('toast'));
+                toastr[toast.type](toast.message);
+            @endif
+        </script>
     </body>
 </html>

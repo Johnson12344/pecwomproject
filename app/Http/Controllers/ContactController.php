@@ -29,10 +29,17 @@ class ContactController extends Controller
 
         try {
             Mail::to(self::ADMIN_EMAIL)->send(new ContactMail($validated));
-            return back()->with('success', 'Your message has been sent successfully!');
+            session()->flash('toast', [
+                'type' => 'success',
+                'message' => 'Your message has been sent successfully!'
+            ]);
+            return back();
         } catch (\Exception $e) {
-            return back()->with('error', 'Failed to send message. Please try again later.')
-                        ->withInput();
+            session()->flash('toast', [
+                'type' => 'error',
+                'message' => 'Failed to send message. Please try again later.'
+            ]);
+            return back()->withInput();
         }
     }
 }

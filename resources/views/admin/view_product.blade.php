@@ -3,33 +3,91 @@
   <head>
     @include('admin.css')
     <style>
-        .div_deg{
-            display: center;
-            justify-content: center;
-            align-items: center;
-            margin-top: auto;
-        }
-        .table_deg{
-            border: 2px solid greenyellow;
-        }
-        th{
-            background-color: skyblue;
-            color: white;
-            font-size: auto;
-            font-weight: bold;
-            padding: auto;
-        }
-        td{
-            border: 1px solid skyblue;
-            text-align: center;
-            color: white;
-        }
-        input[type='search']{
-            width: auto;
-            height: auto;
-            margin-left: auto;
-        }
-    </style>
+        .table-responsive {
+       width: 100%;
+       overflow-x: auto;
+   }
+
+   table {
+       width: 100%;
+       border: 2px solid skyblue;
+       border-collapse: collapse;
+       text-align: center;
+       margin: 20px auto;
+   }
+
+   th {
+       background-color: skyblue;
+       padding: 12px;
+       font-size: 1rem;
+       font-weight: bold;
+       text-align: center;
+       color: white;
+   }
+
+   td {
+       color: white;
+       padding: 10px;
+       text-align: center;
+       border: 1px solid skyblue;
+   }
+
+   .table_center {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin-top: 20px;
+   }
+
+   /* Responsive adjustments */
+   @media (max-width: 768px) {
+       th, td {
+           padding: 8px;
+           font-size: 0.9rem;
+       }
+   }
+
+   /* Table → Cards on Mobile */
+   @media (max-width: 600px) {
+       table, thead, tbody, th, td, tr {
+           display: block;
+           width: 100%;
+       }
+
+       thead tr {
+           display: none; /* hide table headers */
+       }
+
+       table tr:first-child{
+           display: none;
+       }
+
+       tr {
+           margin-bottom: 15px;
+           border: 2px solid skyblue;
+           border-radius: 10px;
+           padding: 10px;
+           background: #0a192f; /* dark background */
+       }
+
+       td {
+           border: none;
+           text-align: left;
+           padding: 8px;
+           position: relative;
+       }
+
+       /* Show <th> labels beside each data cell */
+       td::before {
+           content: attr(data-label);
+           font-weight: bold;
+           text-transform: capitalize;
+           color: skyblue;
+           display: inline-block;
+           width: 130px; /* space for label */
+       }
+   }
+   </style>
   </head>
   <body>
 
@@ -65,19 +123,18 @@
 
 
                 <tr>
-                    <td>{{$products->title}}</td>
-                    <td>{!!Str::limit($products->description,50)!!}</td>
-                    <td>{{$products->category}}</td>
-                    <td>{{$products->price}}</td>
-                    <td>{{$products->quantity}}</td>
-                    <td>
+                    <td data-label="Product Name">{{$products->title}}</td>
+                    <td data-label="Description">{!!Str::limit($products->description,50)!!}</td>
+                    <td data-label="Category">{{$products->category}}</td>
+                    <td data-label="Price">{{$products->price}}</td>
+                    <td data-label="Quantity">{{$products->quantity}}</td>
+                    <td data-label="Image">
                         <img height="100" width="70" src="products/{{$products->image}}" alt="">
                     </td>
-                    <td>
+                    <td data-label="Edit">
                         <a class="btn btn-success" href="{{url('update_product',$products->slug)}}">Edit</a>
                     </td>
-
-                    <td>
+                    <td data-label="Delete">
                         <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_product',$products->id)}}">Delete</a>
                     </td>
                 </tr>
@@ -88,7 +145,7 @@
            </div>
 
            <div class="div_deg">
-            {{$product->onEachSide(1)->links()}}
+            {{-- {{$product->links()}} --}}
            </div>
 
 

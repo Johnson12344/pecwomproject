@@ -23,14 +23,18 @@ class AdminController extends Controller
 
         $category->save();
 
-        toastr()->timeOut(10000)->closeButton()->success("Category Added Successfully");
+        if ($request->expectsJson() || $request->wantsJson()) {
+            return response()->json(['message' => 'Category Added Successfully']);
+        }
+
+        toastr()->success('Category Added Successfully');
         return redirect()->back();
     }
 
     public function delete_category($id){
         $data = Category::find($id);
         $data->delete();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Category Deleted Successfully');
+        toastr()->success('Category Deleted Successfully');
         return redirect()->back();
     }
 
@@ -43,10 +47,9 @@ class AdminController extends Controller
         $data = Category::find($id);
         $data->category_name = $request->category;
         $data->save();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Category Edited Successfully');
+        toastr()->success('Category Edited Successfully');
         return redirect('/view_category');
     }
-
 
     public function add_product(){
         $category = Category::all();
@@ -64,19 +67,24 @@ class AdminController extends Controller
         $image = $request->image;
         if($image){
             $imagename = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('products',$imagename);
+            $destination = public_path('products');
+            if (!is_dir($destination)) {
+                mkdir($destination, 0775, true);
+            }
+            $request->image->move($destination, $imagename);
             $data->image = $imagename;
         }
         $data->save();
 
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Products Added Successfully');
+        toastr()->success('Products Added Successfully');
         return redirect()->back();
     }
 
     public function view_product(){
-        $product = Product::paginate(3);
+        $product = Product::all(); // Use all() instead of pagination
         return view('admin.view_product', compact('product'));
     }
+
     public function delete_product($id){
         $data = Product::find($id);
 
@@ -87,17 +95,15 @@ class AdminController extends Controller
         }
 
         $data->delete();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Deleted Successfully');
+        toastr()->success('Product Deleted Successfully');
         return redirect()->back();
     }
-
 
     public function update_product($slug){
         $data = Product::where('slug', $slug)->get()->first();
         $category = Category::all();
         return view('admin.update_page', compact('data', 'category'));
     }
-
 
     public function edit_product(Request $request, $id){
 
@@ -112,19 +118,23 @@ class AdminController extends Controller
         if($image){
             $imagename = time().'.'.$image->getClientOriginalExtension();
 
-            $request->image->move('products'.$imagename);
+            $destination = public_path('products');
+            if (!is_dir($destination)) {
+                mkdir($destination, 0775, true);
+            }
+            $request->image->move($destination, $imagename);
 
             $data->image = $imagename;
 
         }
         $data->save();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Updated Successfully');
+        toastr()->success('Product Updated Successfully');
         return redirect('/view_product');
     }
 
     public function product_search(Request $request){
         $search = $request->search;
-        $product = Product::where('title','LIKE','%'.$search.'%')->orWhere('category','LIKE','%'.$search.'%')->paginate(3);
+        $product = Product::where('title','LIKE','%'.$search.'%')->orWhere('category','LIKE','%'.$search.'%')->get();
         return view('admin.view_product', compact('product'));
     }
 
@@ -156,9 +166,7 @@ class AdminController extends Controller
 
         $pdf = Pdf::loadView('admin.invoice', compact('data'));
 
-
         return $pdf->download('invoice.pdf');
-
 
     }
 }
