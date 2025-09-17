@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewProductMail;
+use App\Mail\BroadcastMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 class AdminController extends Controller
 {
@@ -76,6 +80,22 @@ class AdminController extends Controller
         }
         $data->save();
 
+        // Notify subscribers (best effort)
+        try {
+            $subscribers = Subscriber::pluck('email');
+            foreach ($subscribers as $email) {
+                Mail::to($email)->queue(new NewProductMail([
+                    'id' => $data->id,
+                    'title' => $data->title,
+                    'price' => $data->price,
+                    'category' => $data->category,
+                    'description' => $data->description,
+                ]));
+            }
+        } catch (\Throwable $e) {
+            // ignore failures to avoid blocking product creation
+        }
+
         toastr()->success('Products Added Successfully');
         return redirect()->back();
     }
@@ -143,6 +163,14 @@ class AdminController extends Controller
         return view('admin.order', compact('data'));
     }
 
+    public function in_progress($id){
+
+        $data = Order::find($id);
+        $data->status = 'in progress';
+        $data->save();
+        return redirect('/view_orders');
+
+    }
     public function on_the_way($id){
 
         $data = Order::find($id);
@@ -168,5 +196,34 @@ class AdminController extends Controller
 
         return $pdf->download('invoice.pdf');
 
+    }
+
+    public function broadcastForm()
+    {
+        return view('admin.broadcast');
+    }
+
+    public function broadcastSend(Request $request)
+    {
+        $request->validate([
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|min:5',
+        ]);
+
+        $subject = $request->subject;
+        $message = $request->message;
+
+        try {
+            Subscriber::chunk(200, function ($subs) use ($subject, $message) {
+                foreach ($subs as $s) {
+                    Mail::to($s->email)->queue(new BroadcastMail($subject, $message));
+                }
+            });
+            toastr()->success('Broadcast queued to subscribers');
+        } catch (\Throwable $e) {
+            toastr()->error('Failed to queue broadcast');
+        }
+
+        return redirect()->back();
     }
 }

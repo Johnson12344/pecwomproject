@@ -8,9 +8,11 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Review;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
 {
@@ -69,16 +71,23 @@ class HomeController extends Controller
         ]));
     }
 
-    public function add_cart($id)
+    public function add_cart(Request $request, $id)
     {
         if (!Auth::id()) {
             return redirect()->route('login');
         }
 
-        Cart::create([
-            'user_id' => Auth::id(),
-            'product_id' => $id
-        ]);
+        $quantityToAdd = (int) $request->input('qty', 1);
+        if ($quantityToAdd < 1) {
+            $quantityToAdd = 1;
+        }
+
+        for ($addedCount = 0; $addedCount < $quantityToAdd; $addedCount++) {
+            Cart::create([
+                'user_id' => Auth::id(),
+                'product_id' => $id
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Product added to cart successfully');
     }
@@ -196,10 +205,38 @@ class HomeController extends Controller
         toastr()->success('Product Ordered Successfully');
     }
 
-    public function shop()
-    {
-        return $this->showProductPage('home.shop');
+    public function shop(Request $request)
+{
+    $q = Product::query();
+
+    if ($request->filled('search')) {
+        $term = $request->search;
+        $q->where(function($x) use ($term){
+            $x->where('title','LIKE','%'.$term.'%')
+              ->orWhere('category','LIKE','%'.$term.'%')
+              ->orWhere('description','LIKE','%'.$term.'%');
+        });
     }
+
+    if ($request->filled('category') && $request->category !== 'all') {
+        $q->where('category', $request->category);
+    }
+
+    if ($request->filled('sort')) {
+        switch ($request->sort) {
+            case 'price_asc':  $q->orderBy('price','asc'); break;
+            case 'price_desc': $q->orderBy('price','desc'); break;
+            default:           $q->latest(); // newest first
+        }
+    } else {
+        $q->latest();
+    }
+
+    return view('home.shop', $this->getViewData([
+        'product' => $q->get(),
+        'categories' => Category::orderBy('category_name')->get()
+    ]));
+}
 
     public function why()
     {

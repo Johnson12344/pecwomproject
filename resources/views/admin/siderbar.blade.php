@@ -4,8 +4,10 @@
       <!-- Sidebar Header-->
       <div class="sidebar-header d-flex align-items-center">
         <div class="title">
-          <h1 class="h5">Femi Johnson (JT)</h1>
-          <p>Software Developer</p>
+         <p class="h5">
+            <a href="https://x.com/jt_oluwa">Femi Johnson</a>
+        </p>
+          <p>Developer</p>
         </div>
       </div>
       <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
@@ -27,6 +29,10 @@
               <li>
                 <a href="{{url('view_orders')}}"> <i class="icon-grid"></i>Orders</a>
             </li>
+
+              <li>
+                <a href="{{ route('admin.broadcast.form') }}"> <i class="icon-mail"></i>Broadcast</a>
+              </li>
 
       </ul>
     </nav>

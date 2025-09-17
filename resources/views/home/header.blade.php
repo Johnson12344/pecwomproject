@@ -6,6 +6,12 @@
         </span> --}}
         {{-- <img height="90px" width="150px" src="images/light_blue_logo.jpg" alt=""/> --}}
       </a>
+
+      <!-- Center brand -->
+      {{-- <div class="brand-center">
+        <a href="/" class="brand-link"></a>
+      </div> --}}
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class=""></span>
       </button>
@@ -41,22 +47,16 @@
             @auth
 
             <a href="{{url('myorders')}}">
-               My Orders
-              </a>
+                My Orders
+               </a>
 
 
-            <a href="{{url('mycart')}}">
+               <a href="{{url('mycart')}}">
                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                [{{$count}}]
+                [{{ $count ?? '' }}]
               </a>
 
-
-
-            <form style="padding: 10px;" method="POST" action="{{ route('logout') }}">
-                @csrf
-               <input class="btn btn-success" type="submit" value="logout">
-            </form>
-
+             <a href="{{ route('account.index') }}">My Account</a>
             @else
 
           <a href="{{url('/login')}}">
@@ -72,10 +72,6 @@
               Register
             </span>
           </a>
-
-
-
-
 
           @endauth
           @endif

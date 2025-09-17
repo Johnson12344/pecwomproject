@@ -51,11 +51,10 @@
               <h5>
                 Newsletter
               </h5>
-              <form action="#">
-                <input type="email" placeholder="Enter your email">
-                <button>
-                  Subscribe
-                </button>
+              <form action="{{ route('newsletter.subscribe') }}" method="POST">
+                @csrf
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
               </form>
             </div>
           </div>
@@ -97,7 +96,7 @@
     <footer class=" footer_section">
       <div class="container">
 
-        <p> <a href="https://x.com/jt_oluwa">Femi Johnson (JT)</a>
+        <p> <a href="https://x.com/jt_oluwa">PECWOM</a>
         </p>
       </div>
     </footer>

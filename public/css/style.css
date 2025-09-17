@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import url("font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&display=swap");
 
 @keyframes fadeIn {
     0% {
@@ -16,6 +17,119 @@
 .animate-fade-in {
     animation: fadeIn 1s ease-in-out;
 }
+
+:root{
+    /* Accent sampled from PECWOM light-blue logo; tweak if needed */
+    --pecwom-accent: #FD4306;
+  }
+
+  /* ... keep existing rules ... */
+
+  #navbarSupportedContent .navbar-nav .nav-link {
+    padding: 5px 25px;
+    color: #514f4f;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+  }
+  #navbarSupportedContent .navbar-nav .nav-link:hover {
+    color: var(--pecwom-accent);
+  }
+
+
+  /* Big hero images */
+  .hero-slider img{
+    width: 100%;
+    max-height: 78vh;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 768px){
+    .brand-center{ top: 12px; }
+    .brand-center .brand-link{ font-size: 18px; }
+    .hero-slider img{ max-height: 50vh; }
+  }
+
+
+
+  /* Centered brand text without changing header markup */
+  .custom_nav-container{
+    position: relative;
+  }
+  .custom_nav-container::after{
+    content: 'PECWOM';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    font-family: "Cinzel", serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 0.28em;
+    color: #000;
+    text-transform: uppercase;
+    text-shadow:
+      0 1px 0 rgba(0,0,0,.25),
+      0 2px 2px rgba(0,0,0,.15),
+      0 4px 8px rgba(0,0,0,.08);
+    transition: color .25s ease, text-shadow .25s ease, transform .25s ease;
+    z-index: 1;
+    pointer-events: none; /* ensure it doesn't block clicks on navbar/toggler */
+  }
+
+  /* hover glow + slight lift */
+  .custom_nav-container:hover::after{
+    color: var(--pecwom-accent);
+    text-shadow:
+      0 1px 0 rgba(0,0,0,.25),
+      0 3px 10px rgba(255,179,102,.65),
+      0 6px 18px rgba(255,179,102,.35);
+    transform: translateX(-50%) translateY(-1px);
+  }
+
+  @media (max-width: 768px){
+    .custom_nav-container::after{ top: 12px; font-size: 20px; letter-spacing: 0.22em; }
+  }
+  /* Navbar/link hover colors → light orange */
+  #navbarSupportedContent .navbar-nav .nav-link:hover{ color: var(--pecwom-accent); }
+  nav ul li a:hover{ color: var(--pecwom-accent); }
+
+  /* Global button/link hover color overrides */
+  .btn:hover,
+  .btn-box a:hover,
+  .slider_section .detail-box a:hover,
+  .shop_section .btn-box a:hover,
+  .saving_section .detail-box .btn-box .btn1:hover,
+  .saving_section .detail-box .btn-box .btn2:hover,
+  .contact_section button:hover,
+  .info_section .info_form form button:hover{
+    color: var(--pecwom-accent);
+    border-color: var(--pecwom-accent);
+  }
+
+  /* Product-hero images (already added previously) */
+  .product-hero .slide-image img{
+    width: 100%;
+    height: 78vh;
+    object-fit: cover;
+    display: block;
+  }
+  .product-hero .carousel-control-prev,
+  .product-hero .carousel-control-next{
+    width: 48px;
+    height: 120px;
+    background: rgba(255,255,255,.9);
+    color: #000;
+    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 768px){
+    .product-hero .slide-image img{ height: 50vh; }
+  }
+
+
+
 
 
 body {
@@ -82,6 +196,7 @@ nav ul {
     justify-content: center;
     list-style: none;
     padding: 0;
+    margin-top: 15px;
     margin-bottom: 20px; /* Add space below the navigation */
 }
 
@@ -91,13 +206,13 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #ff4304; /* Link color */
+    color: #FD4306; /* Link color */
     font-weight: bold;
 }
 
 nav ul li a:hover {
 
-    color: #db4f66;
+    color: #FD4306;
 }
 @media (max-width: 768px) {
     .policy {
@@ -124,7 +239,7 @@ nav ul li a:hover {
 
 #navbarSupportedContent {
   width: 100%;
-  background-color: #ff4304;
+  background-color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -275,6 +390,8 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .user_option a {
@@ -286,11 +403,32 @@ a:focus {
   margin-left: 5px;
 }
 
+/* Product hero: two-per-slide large visuals */
+.product-hero .slide-image img{
+    width: 100%;
+    height: 78vh;
+    object-fit: cover;
+    display: block;
+  }
+  .product-hero .carousel-control-prev,
+  .product-hero .carousel-control-next{
+    width: 48px;
+    height: 120px;
+    background: rgba(255,255,255,.9);
+    color: #000;
+    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 768px){
+    .product-hero .slide-image img{ height: 50vh; }
+  }
+
 /*end header section*/
 .slider_section .slider_container {
   color: #fefefe;
-  background-color: #000000;
-  background-color: black;
+  background-color: white;
+  background-color: white;
   padding: 25px;
   border-radius: 0 0 15px 15px;
 }
@@ -353,9 +491,9 @@ a:focus {
 .slider_section .detail-box a {
   display: inline-block;
   padding: 10px 40px;
-  background-color: #ff4304;
+  background-color: #FD4306;
   color: #ffffff;
-  border: 1px solid #ff4304;
+  border: 1px solid #FD4306;
   border-radius: 5px;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -365,7 +503,7 @@ a:focus {
 
 .slider_section .detail-box a:hover {
   background-color: transparent;
-  color: #db4566;
+  color: #FD4306;
 }
 
 .slider_section .carousel_btn-box {
@@ -443,7 +581,7 @@ a:focus {
 }
 
 .shop_section .box .detail-box h6 span {
-  color: #db4f66;
+  color: #FD4306;
 }
 
 .shop_section .box .new {
@@ -479,9 +617,9 @@ a:focus {
 .shop_section .btn-box a {
   display: inline-block;
   padding: 10px 40px;
-  background-color: #ff4304;
+  background-color: #FD4306;
   color: #ffffff;
-  border: 1px solid #ff4304;
+  border: 1px solid #FD4306;
   border-radius: 5px;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -489,7 +627,7 @@ a:focus {
 
 .shop_section .btn-box a:hover {
   background-color: transparent;
-  color: #f16179;
+  color: #FD4306;
 }
 
 .saving_section {
@@ -623,9 +761,9 @@ a:focus {
  .btn-box a {
     display: inline-block;
     padding: 10px 40px;
-    background-color: #ff4304;
+    background-color: #FD4306;
     color: #ffffff;
-    border: 1px solid #ff4304;
+    border: 1px solid #FD4306;
     border-radius: 5px;
     -webkit-transition: all .3s;
     transition: all .3s;
@@ -633,7 +771,7 @@ a:focus {
 
  .btn-box a:hover {
     background-color: transparent;
-    color: #f16179;
+    color: #FD4306;
   }
 
 .gift_section {
@@ -774,9 +912,9 @@ a:focus {
 .contact_section button {
   display: inline-block;
   padding: 12px 45px;
-  background-color: #ff4304;
+  background-color: #FD4306;
   color: #ffffff;
-  border: 1px solid #ff4304;
+  border: 1px solid #FD4306;
   border-radius: 0;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -787,7 +925,7 @@ a:focus {
 
 .contact_section button:hover {
   background-color: transparent;
-  color: #db4f66;
+  color: #FD4306;
 }
 
 .contact_section .map_container {
@@ -821,7 +959,7 @@ a:focus {
 
 .client_section .box .client_info .client_name h5 {
   font-weight: 600;
-  color: #db4f66;
+  color: #FD4306;
 }
 
 .client_section .box .client_info .client_name h6 {
@@ -843,7 +981,7 @@ a:focus {
 .client_section .carousel-control-next {
   width: 45px;
   height: 125px;
-  background-color: #ff4304;
+  background-color: #FD4306;
   opacity: 1;
   font-size: 28px;
   font-weight: bold;
@@ -890,12 +1028,12 @@ a:focus {
 
 .info_section .social_container .social_box a {
   margin: 0 10px;
-  color: #ff4304;
+  color: #FD4306;
   font-size: 24px;
 }
 
 .info_section .social_container .social_box a:hover{
-    color: #db4f66;
+    color: #FD4306;
 }
 .zoooom-image-container {
     overflow: hidden;
@@ -932,7 +1070,7 @@ a:focus {
   outline: none;
   border: none;
   color: #ffffff;
-  background: #ff4304;
+  background: #FD4306;
   margin-top: 15px;
   text-transform: uppercase;
 }
@@ -1004,7 +1142,7 @@ a:focus {
 }
 
 .footer_section a:hover {
-    color: orange;
+    color: FD4306;
 }
 
 /* end footer section*/

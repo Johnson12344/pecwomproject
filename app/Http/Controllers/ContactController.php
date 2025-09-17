@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Mail\ContactMail;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    private const ADMIN_EMAIL = 'ogunbanwofemi2000@gmail.com';
+    private const ADMIN_EMAIL = 'pecwomorganics@gmail.com';
 
     public function show()
     {
@@ -41,6 +42,25 @@ class ContactController extends Controller
             ]);
             return back()->withInput();
         }
+    }
+
+    public function subscribe(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email|max:255'
+        ]);
+
+        $subscriber = Subscriber::firstOrCreate(['email' => $validated['email']]);
+
+        try {
+            \Mail::raw('New newsletter subscription: '.$subscriber->email, function($message) {
+                $message->to(self::ADMIN_EMAIL)->subject('New Newsletter Subscriber');
+            });
+        } catch (\Exception $e) {
+            // ignore admin mail failure for UX
+        }
+
+        return back()->with('success', 'Subscribed successfully');
     }
 }
 

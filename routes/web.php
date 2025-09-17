@@ -10,6 +10,8 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\AccountController;
+
 
 Route::get('/dashboard', [HomeController::class, 'login_home'])
 ->middleware(['auth', 'verified'])->name('dashboard');;
@@ -20,8 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // My Account
+    Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+    Route::post('/account/profile', [AccountController::class, 'updateProfile'])->name('account.profile.update');
+    Route::post('/account/password', [AccountController::class, 'updatePassword'])->name('account.password.update');
 });
-
 require __DIR__.'/auth.php';
 
 
@@ -84,11 +89,17 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::get('view_orders', [AdminController::class,'view_orders'])->middleware(['auth','admin']);
 
+Route::get('in_progress/{id}', [AdminController::class,'in_progress'])->middleware(['auth','admin']);
+
 Route::get('on_the_way/{id}', [AdminController::class,'on_the_way'])->middleware(['auth','admin']);
 
 Route::get('delivered/{id}', [AdminController::class,'delivered'])->middleware(['auth','admin']);
 
 Route::get('print_pdf/{id}', [AdminController::class,'print_pdf'])->middleware(['auth','admin']);
+
+// Admin newsletter broadcast UI
+Route::get('admin/broadcast', [AdminController::class,'broadcastForm'])->middleware(['auth','admin'])->name('admin.broadcast.form');
+Route::post('admin/broadcast', [AdminController::class,'broadcastSend'])->middleware(['auth','admin'])->name('admin.broadcast.send');
 
 Route::get('terms', [HomeController::class,'terms'])->middleware([]);
 
@@ -120,3 +131,4 @@ Route::get('/write-review', [HomeController::class, 'writeReview'])->middleware(
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/newsletter/subscribe', [ContactController::class, 'subscribe'])->name('newsletter.subscribe');

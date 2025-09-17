@@ -3,29 +3,42 @@
 
 <head>
   @include('home.css')
+  <style>
+    /* Lightweight polish for the landing page */
+    .section-pad{padding-top:40px;padding-bottom:40px}
+    .heading_container h2{letter-spacing:.5px;font-weight:800}
+    .box{border-radius:14px;overflow:hidden;border:1px solid rgba(135,206,235,.25);box-shadow:0 4px 22px rgba(0,0,0,.18)}
+    .box .detail-box h6{font-weight:700}
+    .btn-box a, .btn, button{border-radius:10px}
+    .policy nav ul{gap:22px}
+    @media (max-width:576px){.section-pad{padding-top:24px;padding-bottom:24px}}
+  </style>
 </head>
 
 <body>
-  <div class="hero_area">
-    <!-- header section strats -->
-   @include('home.header')
-    <!-- end header section -->
-    <!-- slider section -->
+    <div class="hero_area">
+        <!-- header section strats -->
+       @include('home.header')
+        <!-- end header section -->
+        <!-- slider section -->
 
-    @include('home.slider')
+        {{-- moved slider below featured products --}}
 
-    <!-- end slider section -->
-  </div>
-  <!-- end hero area -->
+        <!-- end slider section -->
+      </div>
+      <!-- end hero area -->
 
-  <!-- shop section -->
+      @include('home.product_hero')
 
-  @include('home.shoppro')
+      <!-- shop section -->
 
-  <!-- end shop section -->
+      @include('home.shoppro')
 
+      <!-- end shop section -->
 
-  <section class="client_section layout_padding animate-fade-in">
+      @include('home.slider')
+
+  <section class="client_section layout_padding animate-fade-in section-pad">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -104,7 +117,7 @@
   </section>
 
 
-  <section class="client_section layout_padding animate-fade-in">
+  <section class="client_section layout_padding animate-fade-in section-pad">
     <div class="container">
         <div class="heading_container heading_center">
           <h2>
@@ -151,7 +164,7 @@
   </div>
 
 
-  <section class="why_section layout_padding animate-fade-in">
+  <section class="why_section layout_padding animate-fade-in section-pad">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
@@ -401,7 +414,7 @@
 
   <!-- contact section -->
 
-  <section class="contact_section layout_padding animate-fade-in">
+  <section class="contact_section layout_padding animate-fade-in section-pad">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
