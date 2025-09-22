@@ -50,28 +50,91 @@
         </div>
       </form>
 
-      <div class="row g-3 g-md-4">
-        @forelse ($product as $products)
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="product-card">
-            <img class="product-img" src="{{ asset('products/'.$products->image) }}" alt="{{ $products->title }}">
-            <div class="product-body">
-              <h6 class="product-title">{{ $products->title }}</h6>
-              <div class="product-price">£{{ $products->price }}</div>
+
+
+
+      <style>
+        /* ...existing styles... */
+        .tabbar{background:#fff;border-radius:10px}
+        .tabbar .nav-link{color:#0a192f;font-weight:600;border:none}
+        .tabbar .nav-link.active{color:#0a192f;border-bottom:3px solid #0a192f;border-radius:0}
+      </style>
+
+      @php
+        $foodProducts = $product->filter(function($p){
+          return str_contains(strtolower($p->category ?? ''), 'food');
+        });
+        $hairProducts = $product->reject(function($p){
+          return str_contains(strtolower($p->category ?? ''), 'food');
+        });
+      @endphp
+
+      <ul class="nav nav-tabs justify-content-center mb-3 tabbar">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#foodTab">Food Products  {{--({{ $foodProducts->count() }})--}} </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#hairTab">Hair Products {{--({{ $hairProducts->count() }})--}}</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="foodTab">
+          @include('home.product_hero')
+          <br>
+          <br>
+
+          <div class="row g-3 g-md-4">
+            @forelse ($foodProducts as $products)
+            <div class="col-6 col-md-4 col-lg-4">
+              <div class="product-card">
+                <img class="product-img" src="{{ asset('products/'.$products->image) }}" alt="{{ $products->title }}">
+                <div class="product-body">
+                  <h6 class="product-title">{{ $products->title }}</h6>
+                  <div class="product-price">£{{ $products->price }}</div>
+                </div>
+                <div class="product-actions">
+                  <a class="btn btn-danger w-50" href="{{ url('product_details',$products->id) }}">Details</a>
+                  <a class="btn btn-primary w-50" href="{{ url('add_cart',$products->id) }}">Add to Cart</a>
+                </div>
+              </div>
             </div>
-            <div class="product-actions">
-              <a class="btn btn-danger w-50" href="{{ url('product_details',$products->id) }}">Details</a>
-              <a class="btn btn-primary w-50" href="{{ url('add_cart',$products->id) }}">Add to Cart</a>
+            @empty
+            <div class="col-12">
+              <div class="alert alert-secondary mb-0">No food products found.</div>
             </div>
+            @endforelse
           </div>
         </div>
-        @empty
-        <div class="col-12">
-          <div class="alert alert-secondary mb-0">No products found. Try changing your filters.</div>
-        </div>
-        @endforelse
-      </div>
 
+        <div class="tab-pane fade" id="hairTab">
+          @include('home.product_hero')
+<br>
+<br>
+
+          <div class="row g-3 g-md-4">
+            @forelse ($hairProducts as $products)
+            <div class="col-6 col-md-4 col-lg-4">
+              <div class="product-card">
+                <img class="product-img" src="{{ asset('products/'.$products->image) }}" alt="{{ $products->title }}">
+                <div class="product-body">
+                  <h6 class="product-title">{{ $products->title }}</h6>
+                  <div class="product-price">£{{ $products->price }}</div>
+                </div>
+                <div class="product-actions">
+                  <a class="btn btn-danger w-50" href="{{ url('product_details',$products->id) }}">Details</a>
+                  <a class="btn btn-primary w-50" href="{{ url('add_cart',$products->id) }}">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+            @empty
+            <div class="col-12">
+              <div class="alert alert-secondary mb-0">No hair products found.</div>
+            </div>
+            @endforelse
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>

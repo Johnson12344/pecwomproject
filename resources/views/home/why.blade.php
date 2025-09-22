@@ -261,12 +261,27 @@
       </section>
 
 
-
-
-
-
-
-
+    <section class="about_section layout_padding animate-fade-in">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>About Us</h2>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <p>
+              The various products on this website are formulated by me Abi Tella,
+              I am a Microbiologist, Biotechnologist, qualified Dual trained nurse with specialty
+              in adult nursing and psychiatry. I am also a qualified cosmetic formulator specializing
+              in creating organic hair and skincare products. With a strong commitment to sustainability and natural ingredients,
+              I craft formulations that are both effective and gentle on the skin and hair. In addition to my expertise in cosmetics,
+              I hold a diploma in food manufacturing and also produce healthy, organic spices for cooking.
+              My passion for organic and health-conscious products extends across both personal care and culinary applications,
+              ensuring that each product I create is of the highest quality. Our formulation are backed by research.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
   <!-- info section -->

@@ -1,4 +1,5 @@
 <!-- resources/views/home/product_hero.blade.php -->
+
 <section class="product-hero animate-fade-in">
   <div id="productHeroCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="4500">
     <div class="carousel-inner">
